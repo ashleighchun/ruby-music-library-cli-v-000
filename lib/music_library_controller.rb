@@ -25,7 +25,7 @@ class MusicLibraryController
     
     
     
-    if answer = "list songs"
+    if answer == "list songs"
       list_songs 
     end 
       
