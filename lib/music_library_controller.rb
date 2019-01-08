@@ -1,6 +1,6 @@
 require "pry"
 class MusicLibraryController
-  
+  extend Concerns::Findable
   attr_accessor :path, :imported_music
   
   def initialize(path = './db/mp3s')
@@ -28,21 +28,6 @@ class MusicLibraryController
     end 
   end
 
-
-  def list_songs 
-    song_objects = []
-    @imported_music = imported_music
-    imported_music.each do |song|
-      song_objects << song.gsub(".mp3", "")
-    end
-    x = song_objects.sort() 
-    puts "1. #{x[0]}"
-    puts "2. #{x[1]}"
-    puts "3. #{x[2]}"
-    puts "4. #{x[3]}"
-    #binding.pry  
-  end 
-  
   
   def list_songs 
     Song.all.sort{|x, y| x.name <=> y.name}.each.with_index(1) do |value, index| 
@@ -68,8 +53,36 @@ class MusicLibraryController
   def list_songs_by_artist
     puts "Please enter the name of an artist:"
     answer = gets.strip
+    find_artist = Artist.find_by_name(answer)
+    if find_artist 
+      find_artist.songs.sort{|x, y| x.name <=> y.name}.each.with_index(1) do |value, index| 
+        
+        puts "#{index}. #{value.name} - #{value.genre.name}"
+      end
+    end
   end 
   
+  def list_songs_by_genre
+    puts "Please enter the name of a genre:"
+    answer = gets.strip
+    find_genre = Genre.find_by_name(answer)
+    if find_genre 
+      find_genre.songs.sort{|x, y| x.name <=> y.name}.each.with_index(1) do |value, index| 
+        puts "#{index}. #{value.artist.name} - #{value.name}"
+      end
+    end
+  end
+  
+  def play_song 
+    puts "Which song number would you like to play?"
+    answer = gets.strip
+    
+    puts "Playing #{} by #{}"
+  end
+  
+  def call 
+    
+  end 
 end 
 
 
