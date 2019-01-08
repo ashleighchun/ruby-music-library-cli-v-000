@@ -80,9 +80,7 @@ class MusicLibraryController
     puts "Playing #{} by #{}"
   end
   
-  def call 
-    
-  end 
+  
 end 
 
 
