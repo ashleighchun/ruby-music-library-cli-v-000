@@ -26,6 +26,11 @@ class MusicLibraryController
     if answer != "exit" 
       call
     end 
+    
+    if answer = "list songs"
+      list_songs 
+    end 
+      
   end
 
   
