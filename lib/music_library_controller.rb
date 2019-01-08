@@ -31,6 +31,26 @@ class MusicLibraryController
       list_songs 
     end 
       
+    if answer = "list artists"
+      list_artists
+    end
+      
+    if answer = "list genres"  
+      list_genres
+    end 
+    
+    if answer = "list artist"
+      list_songs_by_artist
+    end
+    
+    if answer = "list genre"
+      list_songs_by_genre
+    end 
+    
+    if answer = "play song"
+      play_song
+    end 
+    
   end
 
   
