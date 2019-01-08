@@ -23,9 +23,7 @@ class MusicLibraryController
     
     answer = gets.strip 
     
-    if answer != "exit" 
-      call
-    end 
+    
     
     if answer = "list songs"
       list_songs 
@@ -49,6 +47,10 @@ class MusicLibraryController
     
     if answer = "play song"
       play_song
+    end 
+    
+    if answer != "exit" 
+      call
     end 
     
   end
